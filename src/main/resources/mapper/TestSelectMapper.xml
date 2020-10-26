@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace 关联对应的接口 -->
+<mapper namespace="com.smart.mybatis.mapper.TestSelectMapper">
+    <!-- type 关联对应的持久化对象 -->
+    <resultMap id="BaseResultMap" type="com.smart.mybatis.entity.User">
+        <!-- id -->
+        <id column="uid" property="uid"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="status" property="status"/>
+    </resultMap>
+
+    <!--
+        resultMap ：直接使用定义的 resultMap
+        resultType ：一般情况下指向一个对象（不推荐使用）
+        ParameterType="" ：在 mapper.xml 中声明参数（不推荐）
+    -->
+    <select id="selectById" resultMap="BaseResultMap">
+        select uid, username, password, status from user where uid = #{id}
+    </select>
+
+    <select id="selectList" resultMap="BaseResultMap">
+        select uid, username, password, status from user where status = 0 limit #{page},#{size}
+    </select>
+</mapper>

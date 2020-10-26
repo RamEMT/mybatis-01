@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.smart.mybatis.mapper.TestInsertMapper">
+    <resultMap id="BaseResultMap" type="com.smart.mybatis.entity.User">
+        <id property="uid" column="uid"/>
+    </resultMap>
+
+    <!--
+        useGeneratedKeys : true
+        keyProperty : 指定主键赋值的字段
+     -->
+    <!--
+    <insert id="insert" keyProperty="user.uid" useGeneratedKeys="true">
+        insert into user (username, password) VALUES(#{user.username},#{user.password});
+    </insert>
+    -->
+
+    <!-- Oracle 主键没有自增 序列对象 -->
+    <!--
+    <insert id="insert">
+        &lt;!&ndash; 在执行SQL语句之前 &ndash;&gt;
+        <selectKey keyProperty="user.id" order="BEFORE">
+            &lt;!&ndash; 获取id信息 &ndash;&gt;
+        </selectKey>
+        insert into user (username, password) VALUES(#{user.username},#{user.password});
+    </insert>
+    -->
+
+    <insert id="insert">
+        <!-- 适合没有主键自增的 -->
+        insert into user (username, password) VALUES(#{user.username},#{user.password});
+        <selectKey keyProperty="user.id" order="AFTER">
+            <!-- 获取最后插入的数据id -->
+            select last_insert_id()as id;
+        </selectKey>
+    </insert>
+</mapper>
