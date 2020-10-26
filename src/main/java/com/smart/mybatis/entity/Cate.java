@@ -1,6 +1,7 @@
 package com.smart.mybatis.entity;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Ram
@@ -25,6 +26,9 @@ public class Cate {
      * 状态码 0表示未删除 1表示删除
      */
     private Integer status;
+
+    private List<Product> productList;
+
 
     public Integer getCateId() {
         return cateId;
@@ -56,6 +60,14 @@ public class Cate {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
     }
 }
 

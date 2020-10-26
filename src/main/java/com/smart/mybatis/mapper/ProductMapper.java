@@ -15,7 +15,7 @@ public interface ProductMapper {
      * @param cateId 分类id
      * @return 对应id的所有产品
      */
-    List<Product> selectListById(@Param("cateId") int cateId);
+    List<Product> selectListByCateId(@Param("cateId") int cateId);
 
     /**
      * 添加产品

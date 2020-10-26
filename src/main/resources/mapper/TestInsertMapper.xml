@@ -6,6 +6,9 @@
 <mapper namespace="com.smart.mybatis.mapper.TestInsertMapper">
     <resultMap id="BaseResultMap" type="com.smart.mybatis.entity.User">
         <id property="uid" column="uid"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="status" property="status"/>
     </resultMap>
 
     <!--
