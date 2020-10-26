@@ -39,5 +39,6 @@
     <mappers>
         <mapper resource="mapper/UserMapper.xml"/>
         <mapper resource="mapper/TestSelectMapper.xml"/>
+        <mapper resource="mapper/TestInsertMapper.xml"/>
     </mappers>
 </configuration>
