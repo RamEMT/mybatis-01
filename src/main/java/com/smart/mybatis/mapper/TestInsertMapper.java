@@ -11,8 +11,7 @@ public interface TestInsertMapper {
     /**
      * 插入用户数据
      * @param user 用户
-     * @param id 获取插入后的用户id
      * @return 影响行数
      */
-    int insert(@Param("user") User user, @Param("uid") int id);
+    int insert(@Param("user") User user);
 }
